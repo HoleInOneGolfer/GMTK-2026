@@ -1,9 +1,8 @@
-name: Build Project
+name: Build and Publish
 
 on:
   push:
-    branches: [ main ]
-  workflow_dispatch:
+    branches: [ "main" ]
 
 jobs:
   build:
@@ -22,12 +21,50 @@ jobs:
       - name: Export
         run: |
           mkdir -p builds/html builds/windows
-          # Ensure these preset names match your export_presets.cfg exactly!
+          # Ensure your export preset names match these exactly
           godot --headless --export-release "Web" builds/html/index.html
-          godot --headless --export-release "Windows Desktop" builds/windows/game.exe
+          godot --headless --export-release "Windows" builds/windows/game.exe
+
+          # Zip the files
+          cd builds/html && zip -r ../html.zip . && cd ../..
+          cd builds/windows && zip -r ../windows.zip . && cd ../..
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
         with:
           name: game-builds
+          path: builds/*.zip
+
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # Essential to fix your previous 403 error
+    steps:
+      - name: Download Build Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: game-builds
           path: builds/
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: run-${{ github.run_id }}
+          name: Build ${{ github.run_id }}
+          files: |
+            builds/html.zip
+            builds/windows.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publish to Itch.io
+        uses: Ayowel/butler-to-itch@v2
+        with:
+          butler_key: ${{ secrets.BUTLER_CREDENTIALS }}
+          itch_user: your-username
+          itch_game: your-game-name
+          version: run-${{ github.run_id }}
+          files: |
+            builds/html.zip:html5
+            builds/windows.zip:windows
