@@ -1,0 +1,33 @@
+name: Build Project
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: barichello/godot-ci:4.3
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Create build directories
+        run: mkdir -p builds/html builds/windows
+
+      - name: Export Web
+        run: |
+          mkdir -p /github/home/.local/share/godot/export_templates/4.3.stable
+          godot --headless --export-release "Web" builds/html/index.html
+
+      - name: Export Windows
+        run: |
+          godot --headless --export-release "Windows Desktop" builds/windows/game.exe
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: game-builds
+          path: builds/
