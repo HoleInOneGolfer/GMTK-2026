@@ -2,28 +2,27 @@ name: Build Project
 
 on:
   push:
-    branches: [main]
+    branches: [ main ]
   workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    container:
-      image: barichello/godot-ci:4.3
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Create build directories
-        run: mkdir -p builds/html builds/windows
+      - name: Install Godot
+        uses: chickensoft-games/setup-godot@v2
+        with:
+          version: 4.7.1
+          include-templates: true
 
-      - name: Export Web
+      - name: Export
         run: |
-          mkdir -p /github/home/.local/share/godot/export_templates/4.3.stable
+          mkdir -p builds/html builds/windows
+          # Ensure these preset names match your export_presets.cfg exactly!
           godot --headless --export-release "Web" builds/html/index.html
-
-      - name: Export Windows
-        run: |
           godot --headless --export-release "Windows Desktop" builds/windows/game.exe
 
       - name: Upload Artifacts
