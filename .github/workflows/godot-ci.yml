@@ -1,0 +1,26 @@
+name: Godot CI
+on: [push]
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    container:
+      image: barichello/godot-ci:4.3 # Use the tag matching your Godot version
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      - name: Export
+        run: |
+          mkdir -p build/windows
+          mkdir -p build/web
+          godot --headless --verbose --export-release "Windows Desktop" build/windows/index.exe
+          godot --headless --verbose --export-release "Web" build/web/index.html
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: game-builds
+          path: build/s
