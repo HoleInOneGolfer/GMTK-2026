@@ -71,5 +71,5 @@ jobs:
           itch_game: gmtk-2026
           version: run-${{ github.run_id }}
           files: |
-            builds/html.zip
-            builds/game.exe
+            web builds/html.zip
+            windows builds/game.exe
