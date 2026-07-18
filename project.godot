@@ -10,14 +10,21 @@ config_version=5
 
 [application]
 
-config/name="New Game Project"
+config/name="GMTK 2026"
+run/main_scene="uid://csi86m7rghnqk"
 config/features=PackedStringArray("4.7", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="uid://dli8rt2sm1x8o"
+
+[autoload]
+
+SceneManager="*uid://b5na4awp4pc4t"
 
 [display]
 
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/size/borderless=true
 window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
 
 [physics]
 
