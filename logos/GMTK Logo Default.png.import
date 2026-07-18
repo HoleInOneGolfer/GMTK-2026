@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b5prkj63adxg7"
-path="res://.godot/imported/GMTK Logo Default.png-a876e89522dc3b46ffb1a6408d21d5a6.ctex"
+path="res://.godot/imported/GMTK Logo Default.png-fb888bd5adb0e6e6088f46642c8b4cef.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Jam Logos/GMTK Logo Default.png"
-dest_files=["res://.godot/imported/GMTK Logo Default.png-a876e89522dc3b46ffb1a6408d21d5a6.ctex"]
+source_file="res://logos/GMTK Logo Default.png"
+dest_files=["res://.godot/imported/GMTK Logo Default.png-fb888bd5adb0e6e6088f46642c8b4cef.ctex"]
 
 [params]
 

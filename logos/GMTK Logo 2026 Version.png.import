@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bqaogbe1d8jfb"
-path="res://.godot/imported/GMTK Logo 2026 Version.png-30f9568b489064f334835002337af5be.ctex"
+path="res://.godot/imported/GMTK Logo 2026 Version.png-457ea94e7e931b26fe8d02908c6bafba.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Jam Logos/GMTK Logo 2026 Version.png"
-dest_files=["res://.godot/imported/GMTK Logo 2026 Version.png-30f9568b489064f334835002337af5be.ctex"]
+source_file="res://logos/GMTK Logo 2026 Version.png"
+dest_files=["res://.godot/imported/GMTK Logo 2026 Version.png-457ea94e7e931b26fe8d02908c6bafba.ctex"]
 
 [params]
 

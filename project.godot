@@ -13,6 +13,7 @@ config_version=5
 config/name="GMTK 2026"
 run/main_scene="uid://csi86m7rghnqk"
 config/features=PackedStringArray("4.7", "GL Compatibility")
+boot_splash/show_image=false
 config/icon="uid://dli8rt2sm1x8o"
 
 [autoload]
@@ -23,7 +24,6 @@ SceneManager="*uid://b5na4awp4pc4t"
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
-window/size/borderless=true
 window/stretch/mode="canvas_items"
 
 [physics]

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dshqoktjhdq43"
-path="res://.godot/imported/GMTK Game Jam 2026 Small Logo.png-1d2929453cbe9730e00faa5de0f97082.ctex"
+path="res://.godot/imported/GMTK Game Jam 2026 Small Logo.png-0fdd5cd8ca221343dba4ff59d352b3fa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Jam Logos/GMTK Game Jam 2026 Small Logo.png"
-dest_files=["res://.godot/imported/GMTK Game Jam 2026 Small Logo.png-1d2929453cbe9730e00faa5de0f97082.ctex"]
+source_file="res://logos/GMTK Game Jam 2026 Small Logo.png"
+dest_files=["res://.godot/imported/GMTK Game Jam 2026 Small Logo.png-0fdd5cd8ca221343dba4ff59d352b3fa.ctex"]
 
 [params]
 
