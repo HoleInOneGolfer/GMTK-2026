@@ -1,0 +1,45 @@
+name: Publish Project
+
+on:
+  workflow_run:
+    workflows: ["Build Project"]
+    types:
+      - completed
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Download Build Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: game-builds
+          path: builds/
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          run-id: ${{ github.event.workflow_run.id }}
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: build-${{ github.run_id }}
+          name: Automated Build ${{ github.run_id }}
+          files: |
+            builds/html.zip
+            builds/windows.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publish to Itch.io
+        uses: Ayowel/butler-to-itch@v2
+        with:
+          butler_key: ${{ secrets.BUTLER_CREDENTIALS }}
+          itch_user: holeinonegolfer
+          itch_game: gmtk-2026
+          version: ${{ github.run_id }}
+          files: |
+            builds/html.zip:html5
+            builds/windows.zip:windows
