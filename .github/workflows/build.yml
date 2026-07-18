@@ -1,11 +1,5 @@
-name: Build and Deploy
-on:
-  push:
-    branches:
-      - main
-
-permissions:
-  contents: write
+name: Build Game
+on: [push]
 
 jobs:
   build:
@@ -15,20 +9,20 @@ jobs:
         with:
           lfs: true
 
-      # 1. Build Godot Project
-      - name: Build
-        uses: fire/godot-export@v6.0.0
+      - uses: chickensoft-games/setup-godot@v2
         with:
-          cache: true
+          version: 4.3.0 # Ensure this matches your Godot version
+          include-templates: true
 
-      # 2. Zip the HTML build
-      - name: Zip HTML Build
-        run: zip -r html_build.zip ./build/html/
+      - name: Build Projects
+        run: |
+          mkdir -p builds/windows
+          mkdir -p builds/html
+          godot --headless --export-release "Windows Desktop" builds/windows/index.exe
+          godot --headless --export-release "Web" builds/html/index.zip
 
-      # 3. Create GitHub Release
-      - name: Create Release
-        uses: softprops/action-gh-release@v2
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v4
         with:
-          files: |
-            build/windows/
-            html_build.zip
+          name: game-builds
+          path: builds/
