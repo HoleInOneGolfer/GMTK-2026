@@ -67,9 +67,9 @@ jobs:
         uses: Ayowel/butler-to-itch@v2
         with:
           butler_key: ${{ secrets.BUTLER_CREDENTIALS }}
-          itch_user: your-username
-          itch_game: your-game-name
+          itch_user: holeinonegolfer
+          itch_game: gmtk-2026
           version: run-${{ github.run_id }}
           files: |
-            builds/html.zip:html5
-            builds/game.exe:windows
+            builds/html.zip
+            builds/game.exe
