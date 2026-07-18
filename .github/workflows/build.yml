@@ -1,0 +1,34 @@
+name: Build and Deploy
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      # 1. Build Godot Project
+      - name: Build
+        uses: fire/godot-export@v6.0.0
+        with:
+          cache: true
+
+      # 2. Zip the HTML build
+      - name: Zip HTML Build
+        run: zip -r html_build.zip ./build/html/
+
+      # 3. Create GitHub Release
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            build/windows/
+            html_build.zip
