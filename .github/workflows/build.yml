@@ -21,25 +21,30 @@ jobs:
       - name: Export
         run: |
           mkdir -p builds/html builds/windows
-          # Ensure your export preset names match these exactly
+          # Exporting
           godot --headless --export-release "Web" builds/html/index.html
-          godot --headless --export-release "Windows" builds/windows/game.exe
+          godot --headless --export-release "Windows Desktop" builds/windows/game.exe
 
-          # Zip the files
+          # Zip the html folder
           cd builds/html && zip -r ../html.zip . && cd ../..
-          cd builds/windows && zip -r ../windows.zip . && cd ../..
+
+          # Move the exe to the root of builds folder and remove windows dir
+          mv builds/windows/*.exe builds/game.exe
+          rm -rf builds/windows
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
         with:
           name: game-builds
-          path: builds/*.zip
+          path: |
+            builds/html.zip
+            builds/game.exe
 
   publish:
     needs: build
     runs-on: ubuntu-latest
     permissions:
-      contents: write # Essential to fix your previous 403 error
+      contents: write
     steps:
       - name: Download Build Artifacts
         uses: actions/download-artifact@v4
@@ -54,7 +59,7 @@ jobs:
           name: Build ${{ github.run_id }}
           files: |
             builds/html.zip
-            builds/windows.zip
+            builds/game.exe
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -67,4 +72,4 @@ jobs:
           version: run-${{ github.run_id }}
           files: |
             builds/html.zip:html5
-            builds/windows.zip:windows
+            builds/game.exe:windows
