@@ -35,10 +35,17 @@ I use an automated CI/CD pipeline to streamline my deployment. To push a new rel
     git tag v1.0.0
     ```
 3.  **Push** the tag to GitHub:
-    `bash
+    ```bash
     git push origin v1.0.0
-    `
-    _The GitHub Actions workflow automatically builds, packages, and deploys the new version to the `web` and `windows` channels on Itch.io._
+    ```
+
+**Overwrite Version** If you want to overwrite an existing version, you can use the `-f` flag:
+
+```bash
+    git push -f origin v0.0.0
+```
+
+_The GitHub Actions workflow automatically builds, packages, and deploys the new version to the `web` and `windows` channels on Itch.io._
 
 ### 🔢 Versioning Strategy
 
@@ -59,3 +66,7 @@ I follow [Semantic Versioning](https://semver.org/) for my releases:
 - **Assets:** [List assets or "All assets created during the jam"]
 
 ---
+
+```
+
+```
