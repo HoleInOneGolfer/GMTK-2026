@@ -60,7 +60,3 @@ I follow [Semantic Versioning](https://semver.org/) for my releases:
 - **Assets:** [List assets or "All assets created during the jam"]
 
 ---
-
-```
-
-```
