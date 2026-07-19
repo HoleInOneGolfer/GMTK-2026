@@ -25,6 +25,8 @@ A [Genre] game focused on [Theme] for the **[2026 Game Makers Toolkit Game Jam](
 
 ## 🛠 For Developers
 
+- [View Project Tasks](TODO.md)
+
 ### 🚀 Creating a New Release
 
 I use an automated CI/CD pipeline to streamline my deployment. To push a new release to Itch.io:
