@@ -1,22 +1,34 @@
 # GMTK Game Jam 2026
 
-## Toolkit Setup (Due: 2026-07-19)
+## Task Sorting Guide
 
-- [ ] (A) Scene Manager +toolkit @dev #core due:2026-07-19
+| Marker     | Example              | Meaning                           |
+| :--------- | :------------------- | :-------------------------------- |
+| Priority   | (A) (B) (C)          | Priority level, A–Z               |
+| Project    | +project             | Project label                     |
+| Context    | @context             | Context label                     |
+| Tag        | #tag                 | Freeform tag                      |
+| Due date   | due:2025-06-01       | Due date in ISO format            |
+| Completion | completed:2025-05-20 | Auto-appended on completion       |
+| Custom     | key:value            | Any key:value pair (configurable) |
+
+## Toolkit Setup
+
+- [ ] (A) Scene Manager +toolkit @dev #core due:2026-07-21
       Core system for handling scene transitions and loading states.
-- [ ] (A) Audio Manager +toolkit @dev #core due:2026-07-19
+- [ ] (A) Audio Manager +toolkit @dev #core due:2026-07-21
       BGM and SFX player with volume bus control.
-- [ ] (B) Save System +toolkit @dev #data due:2026-07-19
+- [ ] (B) Save System +toolkit @dev #data due:2026-07-21
       Resource-based persistent data management.
-- [ ] (A) UI +toolkit @ui #frontend due:2026-07-19
-  - [ ] (A) Main Menu +toolkit @ui due:2026-07-19
-  - [ ] (A) Settings Menu +toolkit @ui due:2026-07-19
-  - [ ] (B) Title Screen +toolkit @ui due:2026-07-19
-  - [ ] (B) Intro Screen +toolkit @ui due:2026-07-19
-  - [ ] (A) Pause Menu +toolkit @ui due:2026-07-19
-  - [ ] (A) Game Over Screen +toolkit @ui due:2026-07-19
+- [ ] (A) UI +toolkit @ui #frontend due:2026-07-21
+  - [ ] (A) Main Menu +toolkit @ui due:2026-07-21
+  - [ ] (A) Settings Menu +toolkit @ui due:2026-07-21
+  - [ ] (B) Title Screen +toolkit @ui due:2026-07-21
+  - [ ] (B) Intro Screen +toolkit @ui due:2026-07-21
+  - [ ] (A) Pause Menu +toolkit @ui due:2026-07-21
+  - [ ] (A) Game Over Screen +toolkit @ui due:2026-07-21
 
-# Post-Theme Announcement Tasks
+## Post-Theme Announcement Tasks
 
 - [ ] (A) Define Game Name +planning @admin #setup due:2026-07-22
 - [ ] (A) Rename Repository +infra @admin #setup due:2026-07-22
