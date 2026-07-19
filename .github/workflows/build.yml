@@ -2,7 +2,8 @@ name: Build and Publish
 
 on:
   push:
-    branches: [ "main" ]
+    tags:
+      - 'v*' # Workflow only runs when you push a tag like 'v1.0'
 
 jobs:
   build:
@@ -55,8 +56,8 @@ jobs:
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: run-${{ github.run_id }}
-          name: Build ${{ github.run_id }}
+          tag_name: ${{ github.ref_name }}
+          name: Release ${{ github.ref_name }}
           files: |
             builds/html.zip
             builds/game.exe
@@ -69,7 +70,7 @@ jobs:
           butler_key: ${{ secrets.BUTLER_CREDENTIALS }}
           itch_user: holeinonegolfer
           itch_game: gmtk-2026
-          version: run-${{ github.run_id }}
+          version: ${{ github.ref_name }}
           files: |
             web builds/html.zip
             windows builds/game.exe
