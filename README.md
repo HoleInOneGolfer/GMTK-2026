@@ -39,12 +39,6 @@ I use an automated CI/CD pipeline to streamline my deployment. To push a new rel
     git push origin v1.0.0
     ```
 
-**Overwrite Version** If you want to overwrite an existing version, you can use the `-f` flag:
-
-```bash
-    git push -f origin v0.0.0
-```
-
 _The GitHub Actions workflow automatically builds, packages, and deploys the new version to the `web` and `windows` channels on Itch.io._
 
 ### 🔢 Versioning Strategy
