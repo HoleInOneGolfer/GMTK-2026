@@ -16,6 +16,8 @@
 
 - [ ] (A) Scene Manager +pre-jam @code #engine due:2026-07-21
       Core system for handling scene transitions and loading states.
+- [ ] (A) Level Container Node +pre-jam @code #engine due:2026-07-21
+      Child node under main to act as the parent container for active level or game area instances.
 - [ ] (A) Audio Manager +pre-jam @code #engine due:2026-07-21
       BGM and SFX player with volume bus control.
 - [ ] (B) Save System +pre-jam @code #engine due:2026-07-21
