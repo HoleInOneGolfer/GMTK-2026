@@ -23,6 +23,36 @@ A [Genre] game focused on [Theme] for the **[2026 Game Makers Toolkit Game Jam](
 - **Engine:** Godot 4.7.1
 - **CI/CD:** Automated builds via GitHub Actions & Butler
 
+## 🛠 For Developers
+
+### 🚀 Creating a New Release
+
+I use an automated CI/CD pipeline to streamline my deployment. To push a new release to Itch.io:
+
+1.  **Commit** my changes to `main`.
+2.  **Tag** the commit with a version number:
+    ```bash
+    git tag v1.0.0
+    ```
+3.  **Push** the tag to GitHub:
+    `bash
+    git push origin v1.0.0
+    `
+    _The GitHub Actions workflow automatically builds, packages, and deploys the new version to the `web` and `windows` channels on Itch.io._
+
+### 🔢 Versioning Strategy
+
+I follow [Semantic Versioning](https://semver.org/) for my releases:
+
+- **Major (v1.0.0):** Major milestones (e.g., core gameplay loop finished, jam submission).
+- **Minor (v0.1.0):** Added features or content (e.g., new levels, new mechanics).
+- **Patch (v0.0.1):** Bug fixes, balance tweaks, or documentation updates.
+
+### 📦 Local Development
+
+- **Engine:** Godot 4.7.1
+- **Testing:** I use `F5` to run the project locally.
+
 ## 🤝 Credits
 
 - **Development:** [HoleInOneGolfer](https://holeinonegolfer.itch.io/)
