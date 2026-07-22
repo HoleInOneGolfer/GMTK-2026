@@ -2,9 +2,16 @@
 
 [ext_resource type="Script" uid="uid://ix7xsqvylon5" path="res://scripts/ui.gd" id="1_nt7q6"]
 [ext_resource type="Script" uid="uid://bwcv31ikfnede" path="res://scripts/menu.gd" id="2_x4jx1"]
+[ext_resource type="Script" uid="uid://vynuhgatjaga" path="res://scripts/settings_panel.gd" id="3_yev5y"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_bhunq"]
 font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_gdt2y"]
+font_size = 22
+
+[sub_resource type="LabelSettings" id="LabelSettings_x4jx1"]
+font_size = 10
 
 [node name="UI" type="CanvasLayer" unique_id=1292629276 node_paths=PackedStringArray("hud_node", "menu_node", "timer_label")]
 process_mode = 3
@@ -64,15 +71,12 @@ settings_panel = NodePath("MainLayout/CenterContent/SettingsPanel")
 [node name="MainLayout" type="VBoxContainer" parent="MENU" unique_id=173891452]
 propagate_maximum_size = false
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 13
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -54.0
-offset_top = -234.0
-offset_right = 54.0
-offset_bottom = 234.0
+anchor_bottom = 1.0
+offset_left = -79.0
+offset_right = 79.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
@@ -103,10 +107,6 @@ layout_mode = 2
 layout_mode = 2
 columns = 3
 
-[node name="Label" type="Label" parent="MENU/MainLayout/CenterContent/ShopPanel/ShopGrid" unique_id=57187387]
-layout_mode = 2
-text = "Shop"
-
 [node name="SidePanel" type="VBoxContainer" parent="MENU/MainLayout/CenterContent" unique_id=1785729234]
 layout_mode = 2
 
@@ -125,53 +125,106 @@ text = "Settings"
 [node name="HowToPlayPanel" type="Panel" parent="MENU/MainLayout/CenterContent" unique_id=497723144]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MENU/MainLayout/CenterContent/HowToPlayPanel" unique_id=1819272200]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "How to Play
-How to Play
-How to Play
-How to Play
-How to Play
-How to Play
-How to Play
-How to Play
-How to Play
-"
+[node name="MarginContainer" type="MarginContainer" parent="MENU/MainLayout/CenterContent/HowToPlayPanel" unique_id=371365622]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 306.0
+offset_bottom = 98.0
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MENU/MainLayout/CenterContent/HowToPlayPanel/MarginContainer" unique_id=63344266]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MENU/MainLayout/CenterContent/HowToPlayPanel/MarginContainer/VBoxContainer" unique_id=746996098]
+layout_mode = 2
+text = "How To Play"
+label_settings = SubResource("LabelSettings_gdt2y")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MENU/MainLayout/CenterContent/HowToPlayPanel/MarginContainer/VBoxContainer" unique_id=1838176967]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
+text = "OBJECTIVE:
+Survive against the clock and race the countdown before time runs out!
+
+CONTROLS:
+• WASD: Move character
+• Mouse: Aim and interact with the shop
+
+GAMEPLAY:
+• Score points and gather currency during rounds.
+• Use the shop between rounds to power up your build.
+• Keep an eye on the timer, every second matters!"
 
 [node name="CreditsPanel" type="Panel" parent="MENU/MainLayout/CenterContent" unique_id=559442194]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MENU/MainLayout/CenterContent/CreditsPanel" unique_id=1976191970]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "Credits
-Credits
-Credits
-Credits
-Credits
-Credits
-Credits
-Credits
-Credits
-"
+[node name="MarginContainer" type="MarginContainer" parent="MENU/MainLayout/CenterContent/CreditsPanel" unique_id=459134733]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 302.0
+offset_bottom = 101.0
+grow_vertical = 2
 
-[node name="SettingsPanel" type="Panel" parent="MENU/MainLayout/CenterContent" unique_id=1575487124]
+[node name="VBoxContainer" type="VBoxContainer" parent="MENU/MainLayout/CenterContent/CreditsPanel/MarginContainer" unique_id=589874629]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MENU/MainLayout/CenterContent/SettingsPanel" unique_id=1944079036]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "Settings
-Settings
-Settings
-Settings
-Settings
-Settings
-Settings
-Settings
-Settings
-"
+[node name="Label" type="Label" parent="MENU/MainLayout/CenterContent/CreditsPanel/MarginContainer/VBoxContainer" unique_id=1649542429]
+layout_mode = 2
+text = "Credits"
+label_settings = SubResource("LabelSettings_gdt2y")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MENU/MainLayout/CenterContent/CreditsPanel/MarginContainer/VBoxContainer" unique_id=1996398412]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
+text = "GMTK 2026 GAME JAM ENTRY
+
+DEVELOPMENT & PROGRAMMING:
+• HoleInOneGolfer
+
+ART & ASSETS:
+• 
+
+AUDIO & MUSIC:
+• 
+
+GODOT LICENSE:
+• https://godotengine.org/license/
+
+Thanks for playing!"
+
+[node name="SettingsPanel" type="Panel" parent="MENU/MainLayout/CenterContent" unique_id=1575487124 node_paths=PackedStringArray("volume_slider")]
+layout_mode = 2
+script = ExtResource("3_yev5y")
+volume_slider = NodePath("MarginContainer/VBoxContainer/MasterVolume/MasterVolumeSlider")
+
+[node name="MarginContainer" type="MarginContainer" parent="MENU/MainLayout/CenterContent/SettingsPanel" unique_id=488848331]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 306.0
+offset_bottom = 98.0
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MENU/MainLayout/CenterContent/SettingsPanel/MarginContainer" unique_id=1751767068]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MENU/MainLayout/CenterContent/SettingsPanel/MarginContainer/VBoxContainer" unique_id=1902849950]
+layout_mode = 2
+text = "Settings"
+label_settings = SubResource("LabelSettings_gdt2y")
+
+[node name="MasterVolume" type="HBoxContainer" parent="MENU/MainLayout/CenterContent/SettingsPanel/MarginContainer/VBoxContainer" unique_id=1625612918]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MENU/MainLayout/CenterContent/SettingsPanel/MarginContainer/VBoxContainer/MasterVolume" unique_id=2092982430]
+layout_mode = 2
+text = "Master Volume"
+label_settings = SubResource("LabelSettings_x4jx1")
+
+[node name="MasterVolumeSlider" type="HSlider" parent="MENU/MainLayout/CenterContent/SettingsPanel/MarginContainer/VBoxContainer/MasterVolume" unique_id=1152570216]
+layout_mode = 2
+size_flags_horizontal = 3
