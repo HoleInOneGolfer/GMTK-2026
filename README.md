@@ -10,7 +10,7 @@
 
 ## 📖 About
 
-A [Genre] game focused on [Theme] for the **[2026 Game Makers Toolkit Game Jam](https://itch.io/jam/gmtk-jam-2026)**.
+A [Genre] game focused on the theme **COUNTDOWN** for the **[2026 Game Makers Toolkit Game Jam](https://itch.io/jam/gmtk-jam-2026)**.
 
 ## 🎮 How To Play
 
