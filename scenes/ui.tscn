@@ -6,7 +6,10 @@
 [ext_resource type="Script" uid="uid://vynuhgatjaga" path="res://scripts/settings_panel.gd" id="3_yev5y"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_bhunq"]
-font_size = 32
+font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_sn0t7"]
+font_size = 30
 
 [sub_resource type="LabelSettings" id="LabelSettings_gdt2y"]
 font_size = 22
@@ -52,7 +55,7 @@ label_settings = SubResource("LabelSettings_bhunq")
 horizontal_alignment = 1
 uppercase = true
 
-[node name="MENU" type="Control" parent="." unique_id=956347263 node_paths=PackedStringArray("start_button", "how_to_play_button", "credits_button", "settings_button", "shop_panel", "how_to_play_panel", "credits_panel", "settings_panel")]
+[node name="MENU" type="Control" parent="." unique_id=956347263 node_paths=PackedStringArray("start_button", "shop_button", "how_to_play_button", "credits_button", "settings_button", "shop_panel", "how_to_play_panel", "credits_panel", "settings_panel")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -61,6 +64,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_x4jx1")
 start_button = NodePath("MainLayout/Header/Start")
+shop_button = NodePath("MainLayout/CenterContent/SidePanel/ShopButton")
 how_to_play_button = NodePath("MainLayout/CenterContent/SidePanel/HowToPlayButton")
 credits_button = NodePath("MainLayout/CenterContent/SidePanel/CreditsButton")
 settings_button = NodePath("MainLayout/CenterContent/SidePanel/Settings")
@@ -94,14 +98,31 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Start" type="Button" parent="MENU/MainLayout/Header" unique_id=1216083189]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-text = "Start"
+
+[node name="MarginContainer" type="MarginContainer" parent="MENU/MainLayout/Header/Start" unique_id=199518333]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="MENU/MainLayout/Header/Start/MarginContainer" unique_id=2017392622]
+layout_mode = 2
+size_flags_vertical = 1
+text = "START"
+label_settings = SubResource("LabelSettings_sn0t7")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="CenterContent" type="HBoxContainer" parent="MENU/MainLayout" unique_id=655403105]
 layout_mode = 2
 alignment = 1
 
 [node name="ShopPanel" type="PanelContainer" parent="MENU/MainLayout/CenterContent" unique_id=793732076 node_paths=PackedStringArray("speed_button", "size_button", "time_button")]
+custom_minimum_size = Vector2(250, 200)
 layout_mode = 2
 script = ExtResource("3_gdt2y")
 speed_button = NodePath("ShopGrid/SpeedUpgrade")
@@ -113,41 +134,28 @@ layout_mode = 2
 
 [node name="SpeedUpgrade" type="Button" parent="MENU/MainLayout/CenterContent/ShopPanel/ShopGrid" unique_id=86356164]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 text = "+Speed"
 
 [node name="TimeUpgrade" type="Button" parent="MENU/MainLayout/CenterContent/ShopPanel/ShopGrid" unique_id=1116923741]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 text = "+Time"
 
 [node name="SizeUpgrade" type="Button" parent="MENU/MainLayout/CenterContent/ShopPanel/ShopGrid" unique_id=1328586179]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 text = "+Size"
 
-[node name="SidePanel" type="VBoxContainer" parent="MENU/MainLayout/CenterContent" unique_id=1785729234]
-layout_mode = 2
-
-[node name="HowToPlayButton" type="Button" parent="MENU/MainLayout/CenterContent/SidePanel" unique_id=888697631]
-layout_mode = 2
-text = "How To Play"
-
-[node name="CreditsButton" type="Button" parent="MENU/MainLayout/CenterContent/SidePanel" unique_id=1905698383]
-layout_mode = 2
-text = "Credits"
-
-[node name="Settings" type="Button" parent="MENU/MainLayout/CenterContent/SidePanel" unique_id=1074867017]
-layout_mode = 2
-text = "Settings"
-
-[node name="HowToPlayPanel" type="Panel" parent="MENU/MainLayout/CenterContent" unique_id=497723144]
+[node name="HowToPlayPanel" type="PanelContainer" parent="MENU/MainLayout/CenterContent" unique_id=965537085]
+custom_minimum_size = Vector2(250, 200)
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="MENU/MainLayout/CenterContent/HowToPlayPanel" unique_id=371365622]
-layout_mode = 1
-anchors_preset = 9
-anchor_bottom = 1.0
-offset_right = 306.0
-offset_bottom = 98.0
-grow_vertical = 2
+layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MENU/MainLayout/CenterContent/HowToPlayPanel/MarginContainer" unique_id=63344266]
 layout_mode = 2
@@ -173,16 +181,12 @@ GAMEPLAY:
 • Use the shop between rounds to power up your build.
 • Keep an eye on the timer, every second matters!"
 
-[node name="CreditsPanel" type="Panel" parent="MENU/MainLayout/CenterContent" unique_id=559442194]
+[node name="CreditsPanel" type="PanelContainer" parent="MENU/MainLayout/CenterContent" unique_id=1703624039]
+custom_minimum_size = Vector2(250, 200)
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="MENU/MainLayout/CenterContent/CreditsPanel" unique_id=459134733]
-layout_mode = 1
-anchors_preset = 9
-anchor_bottom = 1.0
-offset_right = 302.0
-offset_bottom = 101.0
-grow_vertical = 2
+layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MENU/MainLayout/CenterContent/CreditsPanel/MarginContainer" unique_id=589874629]
 layout_mode = 2
@@ -212,18 +216,14 @@ GODOT LICENSE:
 
 Thanks for playing!"
 
-[node name="SettingsPanel" type="Panel" parent="MENU/MainLayout/CenterContent" unique_id=1575487124 node_paths=PackedStringArray("volume_slider")]
+[node name="SettingsPanel" type="PanelContainer" parent="MENU/MainLayout/CenterContent" unique_id=1747210978 node_paths=PackedStringArray("volume_slider")]
+custom_minimum_size = Vector2(250, 200)
 layout_mode = 2
 script = ExtResource("3_yev5y")
 volume_slider = NodePath("MarginContainer/VBoxContainer/MasterVolume/MasterVolumeSlider")
 
 [node name="MarginContainer" type="MarginContainer" parent="MENU/MainLayout/CenterContent/SettingsPanel" unique_id=488848331]
-layout_mode = 1
-anchors_preset = 9
-anchor_bottom = 1.0
-offset_right = 306.0
-offset_bottom = 98.0
-grow_vertical = 2
+layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MENU/MainLayout/CenterContent/SettingsPanel/MarginContainer" unique_id=1751767068]
 layout_mode = 2
@@ -244,3 +244,23 @@ label_settings = SubResource("LabelSettings_x4jx1")
 [node name="MasterVolumeSlider" type="HSlider" parent="MENU/MainLayout/CenterContent/SettingsPanel/MarginContainer/VBoxContainer/MasterVolume" unique_id=1152570216]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="SidePanel" type="VBoxContainer" parent="MENU/MainLayout/CenterContent" unique_id=1785729234]
+layout_mode = 2
+
+[node name="ShopButton" type="Button" parent="MENU/MainLayout/CenterContent/SidePanel" unique_id=1248621433]
+layout_mode = 2
+text = "Shop
+"
+
+[node name="HowToPlayButton" type="Button" parent="MENU/MainLayout/CenterContent/SidePanel" unique_id=888697631]
+layout_mode = 2
+text = "How To Play"
+
+[node name="CreditsButton" type="Button" parent="MENU/MainLayout/CenterContent/SidePanel" unique_id=1905698383]
+layout_mode = 2
+text = "Credits"
+
+[node name="Settings" type="Button" parent="MENU/MainLayout/CenterContent/SidePanel" unique_id=1074867017]
+layout_mode = 2
+text = "Settings"

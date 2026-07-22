@@ -1,4 +1,4 @@
-extends Panel
+extends PanelContainer
 
 @export var volume_slider: HSlider
 
