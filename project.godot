@@ -16,6 +16,10 @@ config/features=PackedStringArray("4.7", "GL Compatibility")
 boot_splash/show_image=false
 config/icon="uid://dli8rt2sm1x8o"
 
+[autoload]
+
+GameManager="*uid://d21pdokasdxml"
+
 [display]
 
 window/size/viewport_width=1280

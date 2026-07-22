@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ix7xsqvylon5" path="res://scripts/ui.gd" id="1_nt7q6"]
 [ext_resource type="Script" uid="uid://bwcv31ikfnede" path="res://scripts/menu.gd" id="2_x4jx1"]
+[ext_resource type="Script" uid="uid://ct1ic2sc3eo2i" path="res://scripts/shop_panel.gd" id="3_gdt2y"]
 [ext_resource type="Script" uid="uid://vynuhgatjaga" path="res://scripts/settings_panel.gd" id="3_yev5y"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_bhunq"]
@@ -13,12 +14,13 @@ font_size = 22
 [sub_resource type="LabelSettings" id="LabelSettings_x4jx1"]
 font_size = 10
 
-[node name="UI" type="CanvasLayer" unique_id=1292629276 node_paths=PackedStringArray("hud_node", "menu_node", "timer_label")]
+[node name="UI" type="CanvasLayer" unique_id=1292629276 node_paths=PackedStringArray("hud_node", "menu_node", "timer_label", "score_label")]
 process_mode = 3
 script = ExtResource("1_nt7q6")
 hud_node = NodePath("HUD")
 menu_node = NodePath("MENU")
 timer_label = NodePath("HUD/VBoxContainer/TimerLabel")
+score_label = NodePath("HUD/VBoxContainer/ScoreLabel")
 round_duration = 5.0
 
 [node name="HUD" type="Control" parent="." unique_id=917895727]
@@ -100,12 +102,27 @@ text = "Start"
 layout_mode = 2
 alignment = 1
 
-[node name="ShopPanel" type="PanelContainer" parent="MENU/MainLayout/CenterContent" unique_id=793732076]
+[node name="ShopPanel" type="PanelContainer" parent="MENU/MainLayout/CenterContent" unique_id=793732076 node_paths=PackedStringArray("speed_button", "size_button", "time_button")]
 layout_mode = 2
+script = ExtResource("3_gdt2y")
+speed_button = NodePath("ShopGrid/SpeedUpgrade")
+size_button = NodePath("ShopGrid/SizeUpgrade")
+time_button = NodePath("ShopGrid/TimeUpgrade")
 
 [node name="ShopGrid" type="GridContainer" parent="MENU/MainLayout/CenterContent/ShopPanel" unique_id=640713748]
 layout_mode = 2
-columns = 3
+
+[node name="SpeedUpgrade" type="Button" parent="MENU/MainLayout/CenterContent/ShopPanel/ShopGrid" unique_id=86356164]
+layout_mode = 2
+text = "+Speed"
+
+[node name="TimeUpgrade" type="Button" parent="MENU/MainLayout/CenterContent/ShopPanel/ShopGrid" unique_id=1116923741]
+layout_mode = 2
+text = "+Time"
+
+[node name="SizeUpgrade" type="Button" parent="MENU/MainLayout/CenterContent/ShopPanel/ShopGrid" unique_id=1328586179]
+layout_mode = 2
+text = "+Size"
 
 [node name="SidePanel" type="VBoxContainer" parent="MENU/MainLayout/CenterContent" unique_id=1785729234]
 layout_mode = 2

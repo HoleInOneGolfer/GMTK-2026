@@ -4,7 +4,13 @@ extends CharacterBody2D
 @export var backward_speed_multiplier: float = 0.33
 @export var strafe_speed_multiplier: float = 0.44
 
+func _ready() -> void:
+	apply_size_upgrade()
+
 func _physics_process(delta: float) -> void:
+	# Keep size updated if upgrades happen during runtime
+	apply_size_upgrade()
+	
 	# 1. Look at the mouse cursor
 	look_at(get_global_mouse_position())
 	
@@ -12,29 +18,21 @@ func _physics_process(delta: float) -> void:
 	var forward_backward := Input.get_axis("move_forward", "move_backward")
 	var left_right := Input.get_axis("move_left", "move_right")
 	
-	# 3. Apply individual speed multipliers
-	# Note: moving forward yields a negative axis value with get_axis("move_forward", "move_backward")
-	var current_forward_speed = 0.0
-	if forward_backward < 0:
-		current_forward_speed = forward_speed # Moving forward
-	elif forward_backward > 0:
-		current_forward_speed = forward_speed * backward_speed_multiplier # Moving backward
-		
-	var current_strafe_speed = forward_speed * strafe_speed_multiplier
+	# Fetch the current global speed multiplier from GameManager
+	var global_speed_mult = GameManager.get_player_speed_multiplier()
 	
-	# 4. Build the relative movement vector
-	var move_dir = Vector2.ZERO
-	move_dir += transform.x * (-forward_backward * (forward_speed if forward_backward < 0 else (forward_speed * backward_speed_multiplier))) / forward_speed
-	move_dir += transform.y * (left_right * current_strafe_speed) / forward_speed
-	
-	# A cleaner way to apply directional multipliers:
+	# 3. Build velocity using cleaner approach + GameManager speed multiplier
 	var final_velocity = Vector2.ZERO
 	if forward_backward < 0:
-		final_velocity += transform.x * -forward_backward * forward_speed
+		final_velocity += transform.x * -forward_backward * (forward_speed * global_speed_mult)
 	elif forward_backward > 0:
-		final_velocity += transform.x * -forward_backward * (forward_speed * backward_speed_multiplier)
+		final_velocity += transform.x * -forward_backward * (forward_speed * backward_speed_multiplier * global_speed_mult)
 		
-	final_velocity += transform.y * left_right * (forward_speed * strafe_speed_multiplier)
+	final_velocity += transform.y * left_right * (forward_speed * strafe_speed_multiplier * global_speed_mult)
 	
 	velocity = final_velocity
 	move_and_slide()
+
+func apply_size_upgrade() -> void:
+	var size_mult = GameManager.get_player_size_multiplier()
+	scale = Vector2.ONE * size_mult
