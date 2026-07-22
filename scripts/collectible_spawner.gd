@@ -2,8 +2,8 @@ extends Node
 
 @export var player: Node2D
 @export var collectible_scenes: Array[PackedScene] = []
-@export var spawn_interval: float = 1.5
-@export var spawn_margin: float = 100.0
+@export var spawn_interval: float = 0.6  # Made significantly more frequent (was 1.5)
+@export var spawn_margin: float = 0.0    # Set to 0.0 so they spawn right on the visible edge line
 
 var timer: float = 0.0
 
@@ -29,20 +29,21 @@ func spawn_item() -> void:
 	var screen_size := viewport.get_visible_rect().size
 	var cam_pos = cam.global_position if cam else player.global_position
 	
-	var half_width = (screen_size.x / 2.0) + spawn_margin
-	var half_height = (screen_size.y / 2.0) + spawn_margin
+	# Using true half-widths/heights minus any inset margin so they sit on the border
+	var half_width = (screen_size.x / 2.0) - spawn_margin
+	var half_height = (screen_size.y / 2.0) - spawn_margin
 	
 	var spawn_pos := Vector2.ZERO
 	var side = randi() % 4
 	
 	match side:
-		0: # Top
+		0: # Top edge inside view
 			spawn_pos = cam_pos + Vector2(randf_range(-half_width, half_width), -half_height)
-		1: # Bottom
+		1: # Bottom edge inside view
 			spawn_pos = cam_pos + Vector2(randf_range(-half_width, half_width), half_height)
-		2: # Left
+		2: # Left edge inside view
 			spawn_pos = cam_pos + Vector2(-half_width, randf_range(-half_height, half_height))
-		3: # Right
+		3: # Right edge inside view
 			spawn_pos = cam_pos + Vector2(half_width, randf_range(-half_height, half_height))
 			
 	var instance = random_scene.instantiate() as Node2D

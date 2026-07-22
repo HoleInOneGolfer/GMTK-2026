@@ -51,7 +51,7 @@ func get_player_speed_multiplier() -> float:
 	return 1.0 + (speed_level - 1) * 0.05
 
 func get_player_size_multiplier() -> float:
-	return 1.0 + (size_level - 1) * 0.05
+	return 1.0 + (size_level - 1) * 0.1
 
 func get_bonus_time() -> float:
 	return float((time_level - 1) * 2.5)
