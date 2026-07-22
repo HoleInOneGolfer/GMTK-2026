@@ -13,11 +13,11 @@ func _ready() -> void:
 
 func update_button_labels() -> void:
 	if speed_button:
-		speed_button.text = "Speed Up (Lvl %d) - Cost: %d" % [GameManager.speed_level, GameManager.speed_cost]
+		speed_button.text = "Speed Up (Lvl %d)\nCost: %d" % [GameManager.speed_level, GameManager.speed_cost]
 	if size_button:
-		size_button.text = "Size Up (Lvl %d) - Cost: %d" % [GameManager.size_level, GameManager.size_cost]
+		size_button.text = "Size Up (Lvl %d)\nCost: %d" % [GameManager.size_level, GameManager.size_cost]
 	if time_button:
-		time_button.text = "Time Up (Lvl %d) - Cost: %d" % [GameManager.time_level, GameManager.time_cost]
+		time_button.text = "Time Up (Lvl %d)\nCost: %d" % [GameManager.time_level, GameManager.time_cost]
 
 func _on_speed_pressed() -> void:
 	if GameManager.can_afford(GameManager.speed_cost):

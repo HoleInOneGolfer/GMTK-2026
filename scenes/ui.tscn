@@ -122,7 +122,7 @@ layout_mode = 2
 alignment = 1
 
 [node name="ShopPanel" type="PanelContainer" parent="MENU/MainLayout/CenterContent" unique_id=793732076 node_paths=PackedStringArray("speed_button", "size_button", "time_button")]
-custom_minimum_size = Vector2(250, 200)
+custom_minimum_size = Vector2(350, 200)
 layout_mode = 2
 script = ExtResource("3_gdt2y")
 speed_button = NodePath("ShopGrid/SpeedUpgrade")
@@ -131,6 +131,7 @@ time_button = NodePath("ShopGrid/TimeUpgrade")
 
 [node name="ShopGrid" type="GridContainer" parent="MENU/MainLayout/CenterContent/ShopPanel" unique_id=640713748]
 layout_mode = 2
+columns = 2
 
 [node name="SpeedUpgrade" type="Button" parent="MENU/MainLayout/CenterContent/ShopPanel/ShopGrid" unique_id=86356164]
 layout_mode = 2
@@ -151,7 +152,7 @@ size_flags_vertical = 3
 text = "+Size"
 
 [node name="HowToPlayPanel" type="PanelContainer" parent="MENU/MainLayout/CenterContent" unique_id=965537085]
-custom_minimum_size = Vector2(250, 200)
+custom_minimum_size = Vector2(350, 200)
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="MENU/MainLayout/CenterContent/HowToPlayPanel" unique_id=371365622]
@@ -182,7 +183,7 @@ GAMEPLAY:
 • Keep an eye on the timer, every second matters!"
 
 [node name="CreditsPanel" type="PanelContainer" parent="MENU/MainLayout/CenterContent" unique_id=1703624039]
-custom_minimum_size = Vector2(250, 200)
+custom_minimum_size = Vector2(350, 200)
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="MENU/MainLayout/CenterContent/CreditsPanel" unique_id=459134733]
@@ -217,7 +218,7 @@ GODOT LICENSE:
 Thanks for playing!"
 
 [node name="SettingsPanel" type="PanelContainer" parent="MENU/MainLayout/CenterContent" unique_id=1747210978 node_paths=PackedStringArray("volume_slider")]
-custom_minimum_size = Vector2(250, 200)
+custom_minimum_size = Vector2(350, 200)
 layout_mode = 2
 script = ExtResource("3_yev5y")
 volume_slider = NodePath("MarginContainer/VBoxContainer/MasterVolume/MasterVolumeSlider")
