@@ -1,4 +1,4 @@
-# GMTK-2026: [Insert Game Title]
+# GMTK-2026: Untitled Game (WIP)
 
 [![Play on Itch.io](https://img.shields.io/badge/Itch.io-Play%20Now-red)](https://holeinonegolfer.itch.io/gmtk-2026)
 [![Latest Release](https://img.shields.io/github/v/release/holeinonegolfer/gmtk-2026)](https://github.com/holeinonegolfer/gmtk-2026/releases)
@@ -11,6 +11,8 @@
 ## 📖 About
 
 A high-speed, top-down game focused on the theme **COUNTDOWN** for the **[2026 Game Makers Toolkit Game Jam](https://itch.io/jam/gmtk-jam-2026)**. Survive against the clock, earn score, and buy upgrades between rounds!
+
+_Note: This is an early prototype build. Art, sound, and final features are still under construction!_
 
 ## 🎮 How To Play
 
@@ -57,6 +59,7 @@ I follow [Semantic Versioning](https://semver.org/) for my releases:
 ## 🤝 Credits
 
 - **Development:** [HoleInOneGolfer](https://holeinonegolfer.itch.io/)
-- **Assets:** [List assets or "All assets created during the jam"]
+- **Engine:** Powered by the [Godot Engine](https://godotengine.org/) ([License](https://godotengine.org/license/))
+- **Assets:** Placeholder / Jam WIP
 
 ---
