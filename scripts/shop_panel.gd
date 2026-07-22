@@ -23,19 +23,19 @@ func _on_speed_pressed() -> void:
 	if GameManager.can_afford(GameManager.speed_cost):
 		GameManager.spend_score(GameManager.speed_cost)
 		GameManager.speed_level += 1
-		GameManager.speed_cost = int(GameManager.speed_cost * 1.5)
+		GameManager.speed_cost = int(GameManager.speed_cost * 2.0)
 		update_button_labels()
 
 func _on_size_pressed() -> void:
 	if GameManager.can_afford(GameManager.size_cost):
 		GameManager.spend_score(GameManager.size_cost)
 		GameManager.size_level += 1
-		GameManager.size_cost = int(GameManager.size_cost * 1.5)
+		GameManager.size_cost = int(GameManager.size_cost * 2.0)
 		update_button_labels()
 
 func _on_time_pressed() -> void:
 	if GameManager.can_afford(GameManager.time_cost):
 		GameManager.spend_score(GameManager.time_cost)
 		GameManager.time_level += 1
-		GameManager.time_cost = int(GameManager.time_cost * 1.5)
+		GameManager.time_cost = int(GameManager.time_cost * 2.0)
 		update_button_labels()

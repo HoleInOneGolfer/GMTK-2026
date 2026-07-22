@@ -21,7 +21,6 @@ hud_node = NodePath("HUD")
 menu_node = NodePath("MENU")
 timer_label = NodePath("HUD/VBoxContainer/TimerLabel")
 score_label = NodePath("HUD/VBoxContainer/ScoreLabel")
-round_duration = 5.0
 
 [node name="HUD" type="Control" parent="." unique_id=917895727]
 layout_mode = 3
