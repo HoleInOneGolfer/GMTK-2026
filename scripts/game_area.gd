@@ -16,12 +16,25 @@ extends Node2D
 @export var line_width: float = 1.0
 @export var line_color: Color = Color(0.2, 0.2, 0.3, 0.2)
 
-# Optional: Make it parallax or follow the player slightly
 @export var follow_camera: bool = true
 
+var _last_grid_offset: Vector2 = Vector2.INF
+
 func _process(_delta: float) -> void:
-	# Redraw every frame so it updates relative to camera movement
-	queue_redraw()
+	var cam := get_viewport().get_camera_2d()
+	if cam and follow_camera:
+		var cam_pos = cam.get_screen_center_position()
+		# Snap the grid position to grid chunks so it only updates when crossing lines
+		var current_grid_offset = Vector2(
+			floor(cam_pos.x / grid_size),
+			floor(cam_pos.y / grid_size)
+		)
+		
+		if current_grid_offset != _last_grid_offset:
+			_last_grid_offset = current_grid_offset
+			queue_redraw()
+	elif not follow_camera:
+		set_process(false)
 
 func _draw() -> void:
 	var cam := get_viewport().get_camera_2d()
@@ -29,23 +42,19 @@ func _draw() -> void:
 	var screen_size := get_viewport_rect().size
 	
 	if cam:
-		# Center the grid drawing around the camera's current position
 		top_left = cam.get_screen_center_position() - (screen_size / 2.0)
 	else:
 		top_left = global_position
 		
-	# Draw dynamic background rect covering the camera view
 	if draw_background:
 		draw_rect(Rect2(top_left, screen_size), background_color)
 		
-	# Find the starting grid alignment point based on camera position
 	var start_x = floor(top_left.x / grid_size) * grid_size
 	var start_y = floor(top_left.y / grid_size) * grid_size
 	
 	var end_x = top_left.x + screen_size.x + grid_size
 	var end_y = top_left.y + screen_size.y + grid_size
 	
-	# Draw lines
 	if draw_lines:
 		var x = start_x
 		while x < end_x:
@@ -57,7 +66,6 @@ func _draw() -> void:
 			draw_line(Vector2(start_x, y), Vector2(end_x, y), line_color, line_width)
 			y += grid_size
 
-	# Draw dots on the grid intersections
 	if draw_dots:
 		var x = start_x
 		while x < end_x:
