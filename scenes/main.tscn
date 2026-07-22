@@ -15,7 +15,9 @@ script = ExtResource("1_tefeu")
 [node name="GameArea" type="Node2D" parent="." unique_id=2052191291]
 z_index = -5
 script = ExtResource("2_sugp2")
-dot_radius = 5.0
+background_color = Color(0.77170545, 0.75920016, 0.8441613, 1)
+dot_color = Color(0.1591385, 0.15909249, 0.24542117, 0.5019608)
+line_color = Color(0.15570703, 0.15565869, 0.24065265, 0.2)
 
 [node name="UI" parent="." unique_id=1292629276 instance=ExtResource("2_0wfyh")]
 

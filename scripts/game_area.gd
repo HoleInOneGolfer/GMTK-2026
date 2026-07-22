@@ -1,8 +1,20 @@
 extends Node2D
 
 @export var grid_size: float = 64.0
+
+@export_category("Background")
+@export var draw_background: bool = true
+@export var background_color: Color = Color(0.15, 0.15, 0.18, 1.0)
+
+@export_category("Dots")
+@export var draw_dots: bool = true
 @export var dot_radius: float = 2.0
 @export var dot_color: Color = Color(0.2, 0.2, 0.3, 0.5)
+
+@export_category("Lines")
+@export var draw_lines: bool = true
+@export var line_width: float = 1.0
+@export var line_color: Color = Color(0.2, 0.2, 0.3, 0.2)
 
 # Optional: Make it parallax or follow the player slightly
 @export var follow_camera: bool = true
@@ -22,6 +34,10 @@ func _draw() -> void:
 	else:
 		top_left = global_position
 		
+	# Draw dynamic background rect covering the camera view
+	if draw_background:
+		draw_rect(Rect2(top_left, screen_size), background_color)
+		
 	# Find the starting grid alignment point based on camera position
 	var start_x = floor(top_left.x / grid_size) * grid_size
 	var start_y = floor(top_left.y / grid_size) * grid_size
@@ -29,11 +45,24 @@ func _draw() -> void:
 	var end_x = top_left.x + screen_size.x + grid_size
 	var end_y = top_left.y + screen_size.y + grid_size
 	
-	# Draw dots or grid lines at regular intervals
-	var x = start_x
-	while x < end_x:
+	# Draw lines
+	if draw_lines:
+		var x = start_x
+		while x < end_x:
+			draw_line(Vector2(x, start_y), Vector2(x, end_y), line_color, line_width)
+			x += grid_size
+			
 		var y = start_y
 		while y < end_y:
-			draw_circle(Vector2(x, y), dot_radius, dot_color)
+			draw_line(Vector2(start_x, y), Vector2(end_x, y), line_color, line_width)
 			y += grid_size
-		x += grid_size
+
+	# Draw dots on the grid intersections
+	if draw_dots:
+		var x = start_x
+		while x < end_x:
+			var y = start_y
+			while y < end_y:
+				draw_circle(Vector2(x, y), dot_radius, dot_color)
+				y += grid_size
+			x += grid_size
