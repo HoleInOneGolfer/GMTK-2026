@@ -1,0 +1,177 @@
+[gd_scene format=3 uid="uid://dhnlh73oxr0ai"]
+
+[ext_resource type="Script" uid="uid://ix7xsqvylon5" path="res://scripts/ui.gd" id="1_nt7q6"]
+[ext_resource type="Script" uid="uid://bwcv31ikfnede" path="res://scripts/menu.gd" id="2_x4jx1"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_bhunq"]
+font_size = 32
+
+[node name="UI" type="CanvasLayer" unique_id=1292629276 node_paths=PackedStringArray("hud_node", "menu_node", "timer_label")]
+process_mode = 3
+script = ExtResource("1_nt7q6")
+hud_node = NodePath("HUD")
+menu_node = NodePath("MENU")
+timer_label = NodePath("HUD/VBoxContainer/TimerLabel")
+round_duration = 5.0
+
+[node name="HUD" type="Control" parent="." unique_id=917895727]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD" unique_id=1699384909]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="TimerLabel" type="Label" parent="HUD/VBoxContainer" unique_id=502582177]
+layout_mode = 2
+text = "00:00"
+label_settings = SubResource("LabelSettings_bhunq")
+horizontal_alignment = 1
+uppercase = true
+
+[node name="ScoreLabel" type="Label" parent="HUD/VBoxContainer" unique_id=425339463]
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_bhunq")
+horizontal_alignment = 1
+uppercase = true
+
+[node name="MENU" type="Control" parent="." unique_id=956347263 node_paths=PackedStringArray("start_button", "how_to_play_button", "credits_button", "settings_button", "shop_panel", "how_to_play_panel", "credits_panel", "settings_panel")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_x4jx1")
+start_button = NodePath("MainLayout/Header/Start")
+how_to_play_button = NodePath("MainLayout/CenterContent/SidePanel/HowToPlayButton")
+credits_button = NodePath("MainLayout/CenterContent/SidePanel/CreditsButton")
+settings_button = NodePath("MainLayout/CenterContent/SidePanel/Settings")
+shop_panel = NodePath("MainLayout/CenterContent/ShopPanel")
+how_to_play_panel = NodePath("MainLayout/CenterContent/HowToPlayPanel")
+credits_panel = NodePath("MainLayout/CenterContent/CreditsPanel")
+settings_panel = NodePath("MainLayout/CenterContent/SettingsPanel")
+
+[node name="MainLayout" type="VBoxContainer" parent="MENU" unique_id=173891452]
+propagate_maximum_size = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -54.0
+offset_top = -234.0
+offset_right = 54.0
+offset_bottom = 234.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Header" type="VBoxContainer" parent="MENU/MainLayout" unique_id=1403340877]
+layout_mode = 2
+alignment = 1
+
+[node name="TitleLabel" type="Label" parent="MENU/MainLayout/Header" unique_id=1510896288]
+layout_mode = 2
+text = "Menu"
+label_settings = SubResource("LabelSettings_bhunq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Start" type="Button" parent="MENU/MainLayout/Header" unique_id=1216083189]
+layout_mode = 2
+text = "Start"
+
+[node name="CenterContent" type="HBoxContainer" parent="MENU/MainLayout" unique_id=655403105]
+layout_mode = 2
+alignment = 1
+
+[node name="ShopPanel" type="PanelContainer" parent="MENU/MainLayout/CenterContent" unique_id=793732076]
+layout_mode = 2
+
+[node name="ShopGrid" type="GridContainer" parent="MENU/MainLayout/CenterContent/ShopPanel" unique_id=640713748]
+layout_mode = 2
+columns = 3
+
+[node name="Label" type="Label" parent="MENU/MainLayout/CenterContent/ShopPanel/ShopGrid" unique_id=57187387]
+layout_mode = 2
+text = "Shop"
+
+[node name="SidePanel" type="VBoxContainer" parent="MENU/MainLayout/CenterContent" unique_id=1785729234]
+layout_mode = 2
+
+[node name="HowToPlayButton" type="Button" parent="MENU/MainLayout/CenterContent/SidePanel" unique_id=888697631]
+layout_mode = 2
+text = "How To Play"
+
+[node name="CreditsButton" type="Button" parent="MENU/MainLayout/CenterContent/SidePanel" unique_id=1905698383]
+layout_mode = 2
+text = "Credits"
+
+[node name="Settings" type="Button" parent="MENU/MainLayout/CenterContent/SidePanel" unique_id=1074867017]
+layout_mode = 2
+text = "Settings"
+
+[node name="HowToPlayPanel" type="Panel" parent="MENU/MainLayout/CenterContent" unique_id=497723144]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MENU/MainLayout/CenterContent/HowToPlayPanel" unique_id=1819272200]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "How to Play
+How to Play
+How to Play
+How to Play
+How to Play
+How to Play
+How to Play
+How to Play
+How to Play
+"
+
+[node name="CreditsPanel" type="Panel" parent="MENU/MainLayout/CenterContent" unique_id=559442194]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MENU/MainLayout/CenterContent/CreditsPanel" unique_id=1976191970]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Credits
+Credits
+Credits
+Credits
+Credits
+Credits
+Credits
+Credits
+Credits
+"
+
+[node name="SettingsPanel" type="Panel" parent="MENU/MainLayout/CenterContent" unique_id=1575487124]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MENU/MainLayout/CenterContent/SettingsPanel" unique_id=1944079036]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Settings
+Settings
+Settings
+Settings
+Settings
+Settings
+Settings
+Settings
+Settings
+"
