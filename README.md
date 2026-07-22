@@ -10,13 +10,13 @@
 
 ## 📖 About
 
-A [Genre] game focused on the theme **COUNTDOWN** for the **[2026 Game Makers Toolkit Game Jam](https://itch.io/jam/gmtk-jam-2026)**.
+A high-speed, top-down game focused on the theme **COUNTDOWN** for the **[2026 Game Makers Toolkit Game Jam](https://itch.io/jam/gmtk-jam-2026)**. Survive against the clock, earn score, and buy upgrades between rounds!
 
 ## 🎮 How To Play
 
-- **Move:** [Key/Button]
-- **Action:** [Key/Button]
-- **Objective:** [Briefly describe the goal]
+- **Move:** WASD (Look and aim with the Mouse)
+- **Action:** Mouse Click (Interact with the Shop and buttons)
+- **Objective:** Beat the countdown timer, rack up your score, and power up your Speed, Size, and Time in the shop menu!
 
 ## 🛠 Tech Stack
 
@@ -25,21 +25,19 @@ A [Genre] game focused on the theme **COUNTDOWN** for the **[2026 Game Makers To
 
 ## 🛠 For Developers
 
-- [View Project Tasks](TODO.md)
-
 ### 🚀 Creating a New Release
 
 I use an automated CI/CD pipeline to streamline my deployment. To push a new release to Itch.io:
 
-1.  **Commit** my changes to `main`.
-2.  **Tag** the commit with a version number:
-    ```bash
-    git tag v1.0.0
-    ```
-3.  **Push** the tag to GitHub:
-    ```bash
-    git push origin v1.0.0
-    ```
+1. **Commit** my changes to `main`.
+2. **Tag** the commit with a version number:
+   ```bash
+   git tag v1.0.0
+   ```
+3. **Push** the tag to GitHub:
+   ```bash
+   git push origin v1.0.0
+   ```
 
 _The GitHub Actions workflow automatically builds, packages, and deploys the new version to the `web` and `windows` channels on Itch.io._
 
