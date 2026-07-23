@@ -104,7 +104,8 @@ alignment = 1
 
 [node name="TitleLabel" type="Label" parent="MENU/MainLayout/Header" unique_id=1510896288]
 layout_mode = 2
-text = "     Menu     "
+text = "Stardust
+Stroll"
 label_settings = SubResource("LabelSettings_6rmj2")
 horizontal_alignment = 1
 vertical_alignment = 1
