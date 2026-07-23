@@ -10,11 +10,11 @@ config_version=5
 
 [application]
 
-config/name="GMTK 2026"
+config/name="Stardust Stroll"
 run/main_scene="uid://csi86m7rghnqk"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 boot_splash/show_image=false
-config/icon="uid://dli8rt2sm1x8o"
+config/icon="uid://dv03q770wurjq"
 
 [autoload]
 
